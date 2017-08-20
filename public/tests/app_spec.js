@@ -43,7 +43,7 @@ describe('LearnJS', function() {
         view.find('.answer').val('true');
         view.find('.check-btn').click();
         expect(view.find('.result').text())
-          .toEqual('Correct!');
+          .toMatch(/Correct!\s+Next Problem/);
       });
 
       it('can reject an incorrect answer', function() {
