@@ -1,0 +1,9 @@
+'use strict';
+
+var learnjs = {};
+
+// Router
+learnjs.showView = function(hash) {
+  var problemView = $('<div class="problem-view">').text('Coming soon!');
+  $('.view-container').empty().append(problemView);
+}
