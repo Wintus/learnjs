@@ -24,7 +24,7 @@ learnjs.problemView = function(data) {
 
   function checkAnswerClick() {
     var str = checkAnswer() ? 'Correct!' : 'Incorrect!';
-    resultFlash.text(str);
+    learnjs.flashElement(resultFlash, str);
     return false; // suppress reload
   }
 
@@ -63,4 +63,12 @@ learnjs.applyObject = function(obj, elem) {
   for (var key in obj) {
     elem.find('[data-name="' + key + '"]').text(obj[key]);
   }
+};
+
+// Animations
+learnjs.flashElement = function(elem, content) {
+  elem.fadeOut('fast', function() {
+    elem.html(content);
+    elem.fadeIn();
+  });
 };
