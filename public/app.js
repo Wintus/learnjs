@@ -27,3 +27,15 @@ learnjs.showView = function(hash) {
     $('.view-container').empty().append(viewFn(hashParts[1]));
   }
 }
+
+// Data Model
+learnjs.problems = [
+  {
+    description: "What is truth?",
+    code: "function problem() { return __; }"
+  },
+  {
+    description: "Simple Math",
+    code: "function problem() { return 42 === 6 * __; }"
+  }
+];
