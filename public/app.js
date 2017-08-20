@@ -9,10 +9,12 @@ learnjs.appOnReady = function() {
   learnjs.showView(window.location.hash);
 }
 
-learnjs.problemView = function(problemNumber) {
+learnjs.problemView = function(data) {
+  var problemNumber = parseInt(data, 10);
   var view = $('.templates .problem-view').clone();
-  var title = 'Problem #' + problemNumber + ' Coming soon!';
+  var title = 'Problem #' + problemNumber;
   view.find('.title').text(title);
+  learnjs.applyObject(learnjs.problems[problemNumber - 1], view);
   return view;
 }
 
@@ -39,3 +41,10 @@ learnjs.problems = [
     code: "function problem() { return 42 === 6 * __; }"
   }
 ];
+
+// one-way binding
+learnjs.applyObject = function(obj, elem) {
+  for (var key in obj) {
+    elem.find('[data-name="' + key + '"]').text(obj[key]);
+  }
+};
