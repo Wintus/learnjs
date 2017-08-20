@@ -23,8 +23,13 @@ learnjs.problemView = function(data) {
   }
 
   function checkAnswerClick() {
-    var str = checkAnswer() ? 'Correct!' : 'Incorrect!';
-    learnjs.flashElement(resultFlash, str);
+    if (checkAnswer()) {
+      var correctFlash = learnjs.template('correct-flash');
+      correctFlash.find('a').attr('href', '#problem-' + (problemNumber + 1));
+      learnjs.flashElement(resultFlash, correctFlash);
+    } else {
+      learnjs.flashElement(resultFlash, 'Incorrect!');
+    }
     return false; // suppress reload
   }
 
