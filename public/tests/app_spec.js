@@ -53,6 +53,13 @@ describe('LearnJS', function() {
           .toEqual('Incorrect!');
       });
     });
+
+/*
+    it('can skip a problem', function() {
+      $('.nav-list>.skip-btn>a').trigger('click');
+      expect(view.find('.title').text()).toEqual('Problem #2');
+    });
+*/
   });
 
   it('invokes the router when loaded', function () {
