@@ -51,6 +51,23 @@ describe('LearnJS', function() {
         .toEqual("function problem() { return __; }");
     });
 
+    describe('skip button', function() {
+      it('is added to the navbar when the view is added', function() {
+        expect($('.nav-list .skip-btn').length).toEqual(1);
+      });
+
+      it('is removed from the navbar when the view is removed', function() {
+        view.trigger('removingView');
+        expect($('.nav-list .skip-btn').length).toEqual(0);
+      });
+
+      it('does not added when at the last problem', function() {
+        view.trigger('removingView');
+        view = learnjs.problemView(2);
+        expect($('.nav-list .skip-btn').length).toEqual(0);
+      });
+    });
+
     describe('answer section', function() {
       it('can check a correct answer by hitting a button', function() {
         view.find('.answer').val('true');
@@ -66,12 +83,5 @@ describe('LearnJS', function() {
           .toEqual('Incorrect!');
       });
     });
-
-/*
-    it('can skip a problem', function() {
-      $('.nav-list>.skip-btn>a').trigger('click');
-      expect(view.find('.title').text()).toEqual('Problem #2');
-    });
-*/
   });
 });
