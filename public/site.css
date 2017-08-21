@@ -25,4 +25,8 @@ body { margin-top: 6rem; }
   background: #666;
 }
 .nav-container a { color: white; }
+.navbar-padding {
+  padding-top: 6px;
+  display: inline-block;
+}
 .text-lg { font-size: 2em; }
