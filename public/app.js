@@ -9,6 +9,11 @@ learnjs.appOnReady = function() {
   learnjs.showView(window.location.hash);
 }
 
+// renderer
+learnjs.landingView = function() {
+  return learnjs.template('landing-view');
+};
+
 learnjs.problemView = function(data) {
   var problemNumber = parseInt(data, 10);
   var view = learnjs.template('problem-view');
@@ -41,6 +46,8 @@ learnjs.problemView = function(data) {
 // Router
 learnjs.showView = function(hash) {
   var routes = {
+    '': learnjs.landingView,
+    '#': learnjs.landingView,
     '#problem': learnjs.problemView
   };
   var hashParts = hash.split('-');
