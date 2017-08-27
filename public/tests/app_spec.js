@@ -91,6 +91,10 @@ describe('LearnJS', function() {
         expect($('.nav-list .skip-btn').length).toEqual(0);
       });
 
+      it('contains a link to the next problem', function() {
+        expect($('.nav-list .skip-btn').length).toEqual(1);
+      });
+
       it('does not added when at the last problem', function() {
         view.trigger('removingView');
         view = learnjs.problemView(2);
