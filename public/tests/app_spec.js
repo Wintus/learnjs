@@ -42,6 +42,13 @@ describe('LearnJS', function() {
     expect(elem.fadeIn).toHaveBeenCalled();
   });
 
+  it('can redirect to the main view after the last problem is answered', function() {
+    var flash = learnjs.buildCorrectFlash(2);
+    var link = flash.find('a');
+    expect(link.attr('href')).toEqual('');
+    expect(link.text()).toEqual("You're Finished!");
+  });
+
   describe('problem view', function() {
     var view;
     beforeEach(function() {
