@@ -49,6 +49,17 @@ describe('LearnJS', function() {
     expect(link.text()).toEqual("You're Finished!");
   });
 
+  it('can trigger events on the view', function() {
+    var callback = jasmine.createSpy('callback');
+    var foo = 'fooEvent', bar = 'bar';
+    var div = $('<div>').bind(foo, callback);
+    $('.view-container').append(div);
+    learnjs.triggerEvent(foo, [bar]);
+
+    expect(callback).toHaveBeenCalled();
+    expect(callback.calls.argsFor(0)[1]).toEqual(bar);
+  });
+
   describe('problem view', function() {
     var view;
     beforeEach(function() {
