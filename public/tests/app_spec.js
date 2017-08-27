@@ -30,6 +30,18 @@ describe('LearnJS', function() {
     expect(learnjs.showView).toHaveBeenCalledWith(window.location.hash);
   });
 
+  it('can flash an element while setting the text', function() {
+    var elem = $('<p>');
+    var text = "new text";
+    spyOn(elem, 'fadeOut').and.callThrough();
+    spyOn(elem, 'fadeIn');
+    learnjs.flashElement(elem, text);
+
+    expect(elem.text()).toEqual(text);
+    expect(elem.fadeOut).toHaveBeenCalled();
+    expect(elem.fadeIn).toHaveBeenCalled();
+  });
+
   describe('problem view', function() {
     var view;
     beforeEach(function() {
