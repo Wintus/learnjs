@@ -100,16 +100,35 @@ describe('LearnJS', function() {
     });
 
     describe('answer section', function() {
-      it('can check a correct answer by hitting a button', function() {
-        view.find('.answer').val('true');
-        view.find('.check-btn').click();
-        expect(view.find('.result')).toHaveText(/Correct!\s+Next Problem/);
+      var resultFlash;
+      beforeEach(function() {
+        spyOn(learnjs, 'flashElement');
+        resultFlash = view.find('.result');
+      });
+
+      describe('when the answer is correct', function() {
+        beforeEach(function() {
+          view.find('.answer').val('true');
+          view.find('.check-btn').click();
+        });
+
+        it('flashes the result', function() {
+          var flashArgs = learnjs.flashElement.calls.argsFor(0);
+          expect(flashArgs[0]).toEqual(resultFlash);
+          expect(flashArgs[1].find('span')).toHaveText('Correct!');
+        });
+
+        it('shows a link to the next problem', function() {
+          var link = learnjs.flashElement.calls.argsFor(0)[1].find('a');
+          expect(link).toHaveText('Next Problem');
+          expect(link).toHaveAttr('href', '#problem-2');
+        });
       });
 
       it('can reject an incorrect answer', function() {
         view.find('.answer').val('false');
         view.find('.check-btn').click();
-        expect(view.find('.result')).toHaveText('Incorrect!');
+        expect(learnjs.flashElement).toHaveBeenCalledWith(resultFlash, 'Incorrect!');
       });
     });
   });
