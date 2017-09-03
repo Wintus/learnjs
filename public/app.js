@@ -9,6 +9,7 @@ learnjs.appOnReady = function() {
     learnjs.showView(window.location.hash);
   };
   learnjs.showView(window.location.hash);
+  learnjs.identity.done(learnjs.addProfileLink);
 }
 
 // renderer
@@ -60,6 +61,12 @@ learnjs.profileView = function() {
     view.find('.email').text(identity.email);
   });
   return view;
+}
+
+learnjs.addProfileLink = function(profile) {
+  const link = learnjs.template('profile-link');
+  link.find('a').text(profile.email);
+  $('.signin-bar').prepend(link);
 }
 
 // Router

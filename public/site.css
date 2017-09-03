@@ -29,4 +29,8 @@ body { margin-top: 6rem; }
   padding-top: 6px;
   display: inline-block;
 }
+.navbar-padding-lg {
+  padding-top: 12px;
+  display: inline-block;
+}
 .text-lg { font-size: 2em; }
