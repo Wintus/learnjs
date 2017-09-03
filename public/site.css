@@ -1,4 +1,4 @@
-body { margin-top: 30px; }
+body { margin-top: 6rem; }
 .templates { display: none; }
 .inline-list {
   margin-bottom: 0; /* Skeleton reset */
@@ -21,8 +21,8 @@ body { margin-top: 30px; }
 .hover-links a { text-decoration: none; }
 .hover-links a:hover { text-decoration: underline; }
 .nav-container {
-  padding-left: 40px;
+  padding-left: 4rem;
   background: #666;
 }
 .nav-container a { color: white; }
-.text-lg { font-size: large; }
+.text-lg { font-size: 2em; }
