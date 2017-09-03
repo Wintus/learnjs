@@ -54,12 +54,21 @@ learnjs.problemView = function(data) {
   return view;
 }
 
+learnjs.profileView = function() {
+  const view = learnjs.template('profile-view');
+  learnjs.identity.done(function(identity) {
+    view.find('.email').text(identity.email);
+  });
+  return view;
+}
+
 // Router
 learnjs.showView = function(hash) {
   var routes = {
-    '': learnjs.landingView,
-    '#': learnjs.landingView,
-    '#problem': learnjs.problemView
+    '':         learnjs.landingView,
+    '#':        learnjs.landingView,
+    '#problem': learnjs.problemView,
+    '#profile': learnjs.profileView,
   };
   var hashParts = hash.split('-');
   var viewFn = routes[hashParts[0]];

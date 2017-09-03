@@ -169,4 +169,25 @@ describe('LearnJS', function() {
       });
     });
   });
+
+  describe('profile view', function() {
+    let view;
+    beforeEach(function() {
+      view = learnjs.profileView();
+    });
+
+    // FIXME: stateful
+
+    it('shews no email address when they are not logged in yet', function() {
+      expect(view.find('.email')).toHaveText('');
+    });
+
+    it('shows the users email address when they log in', function() {
+      const address = 'foo@bar.com';
+      learnjs.identity.resolve({
+        email: address
+      });
+      expect(view.find('.email')).toHaveText(address);
+    });
+  });
 });
