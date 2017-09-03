@@ -138,4 +138,35 @@ describe('LearnJS', function() {
       });
     });
   });
+
+  // Auth
+  describe('awsRefresh', function() {
+    let callbackArg, fakeCreds;
+    const cognitoId = 'COGNITO_ID';
+
+    beforeEach(function() {
+      fakeCreds = jasmine.createSpyObj('creds', ['refresh']);
+      fakeCreds.identityId = cognitoId;
+      AWS.config.credentials = fakeCreds;
+      fakeCreds.refresh.and.callFake(function(cb) { cb(callbackArg) });
+    });
+
+    // see: https://jasmine.github.io/2.0/introduction.html#section-Asynchronous_Support
+
+    it('returns a promise that resolves on success', function(done) {
+      learnjs.awsRefresh().then(function(id) {
+        expect(fakeCreds.identityId).toEqual(cognitoId);
+      }).then(done, fail);
+    });
+
+    it('rejects the promise on failure', function(done) {
+      const error = "error"
+
+      callbackArg = error;
+      learnjs.awsRefresh().fail(function(err) {
+        expect(err).toEqual(error);
+        done();
+      });
+    });
+  });
 });
