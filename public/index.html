@@ -6,10 +6,16 @@
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'>
-    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
     <script src='/vendor.js'></script>
     <script src='/app.js'></script>
     <link rel="stylesheet" href="/site.css" media="all">
+    <!-- Auth -->
+    <meta name="google-signin-client_id"
+          content="301262940318-gj4vb8fts9g2aslhu6kmqi0114g7kqjj.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
     <div class="markup">
@@ -18,6 +24,11 @@
           <li><a href="#" class="text-lg">LearnJS</a></li>
           <li><a href="#problem-1">Start</a></li>
         </ul>
+        <div class="four columns signin-bar">
+          <span class="navbar-padding u-pull-right">
+            <span class="g-signin2" data-onsuccess="googleSignIn"></span>
+          </span>
+        </div>
       </div>
       <div class="view-container container">
       </div>
@@ -55,6 +66,16 @@
         <li class="skip-btn">
             <a href="">Skip This Problem</a>
         </li>
+
+        <div class="profile-view">
+          <h3>Your profile</h3>
+          <div class="email"></div>
+        </div>
+
+        <div class="profile-link navbar-padding-lg">
+            <a href="#profile"></a>
+        </div>
+
       </div>
     </div>
     <script type="text/javascript">
